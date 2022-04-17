@@ -77,11 +77,10 @@ public class UserService {
     }
 
     private User getUserByPrincipal(Principal principal) {
-        System.out.println(principal.getName());
-        String username = principal.getName();
+        String email = principal.getName();
 
-        return userRepository.findUserByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User username not found: " + username));
+        return userRepository.findUserByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User email not found: " + email));
     }
 
     public User getUserById(long userId) {

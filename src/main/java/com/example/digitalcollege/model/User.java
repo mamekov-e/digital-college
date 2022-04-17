@@ -13,12 +13,10 @@ import java.util.*;
 
 @Data
 @Entity
-public class User {
+public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String username;
 
     @Column(nullable = false)
     private String firstName;
@@ -62,47 +60,47 @@ public class User {
     public User() {
     }
 
-//    public User(Long id,
-//                String email,
-//                String password,
-//                Collection<? extends GrantedAuthority> authorities) {
-//        this.id = id;
-//        this.email = email;
-//        this.password = password;
-//        this.authorities = authorities;
-//    }
-//
-//    @Transient
-//    private Collection<? extends GrantedAuthority> authorities;
-//
-//    @Override
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    @Override
-//    public String getUsername() {
-//        return email;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
+    public User(Long id,
+                String email,
+                String password,
+                Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.authorities = authorities;
+    }
+
+    @Transient
+    private Collection<? extends GrantedAuthority> authorities;
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 }

@@ -27,11 +27,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return UserDetailsImpl.build(user);
     }
 
-    public UserDetails loadUserById(Long userId) {
-        User user = userRepository.findUserById(userId)
+    public User loadUserById(Long userId) {
+        return userRepository.findUserById(userId)
                 .orElse(null);
-
-        assert user != null;
-        return UserDetailsImpl.build(user);
     }
 }
