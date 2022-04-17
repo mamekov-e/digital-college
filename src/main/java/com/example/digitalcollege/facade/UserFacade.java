@@ -14,6 +14,7 @@ public class UserFacade {
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
         userDto.setMiddleName(user.getMiddleName());
+        userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setIIN(user.getIIN());
         userDto.setDob(user.getDob());
 

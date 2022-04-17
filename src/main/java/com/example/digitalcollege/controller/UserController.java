@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private ResponseErrorValidation responseErrorValidation;
 
-    @GetMapping("/")
+    @GetMapping("/get-current")
     public ResponseEntity<UserDto> getCurrentUser(Principal principal) {
         User user = userService.getCurrentUser(principal);
         UserDto userDto = userFacade.userToUserDto(user);
@@ -37,7 +37,7 @@ public class UserController {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/get-user/{userId}")
     public ResponseEntity<UserDto> getUserProfile(@PathVariable("userId") String userId) {
         User user = userService.getUserById(Long.parseLong(userId));
         UserDto userDto = userFacade.userToUserDto(user);
